@@ -14,7 +14,24 @@ code {
 .map-container {
   height:100vh;
 }
-
+.main{
+  display: flex;
+  
+}
+.footer {
+  
+  color: orangered ;
+  padding: 6px 12px;
+  font-family: monospace;
+  z-index: 1;
+  position: absolute;
+  bottom: 2px;
+  margin-left: auto;
+  left:40vw;
+  font-size: 20px;
+  margin: 12px;
+  border-radius: 4px;
+}
 .navbar {
   background-color: rgba(35, 55, 75, 0.9);
   color: #fff;
@@ -28,26 +45,58 @@ code {
   margin: 12px;
   border-radius: 4px;
 }
-.footer {
-  
-  color: #4c4b4b;
-  padding: 6px 12px;
-  font-family: monospace;
-  z-index: 1;
-  position: absolute;
-  bottom: 2px;
-  margin-left: auto;
-  right: 2px;
-  font-size: 20px;
-  margin: 12px;
-  border-radius: 4px;
-}
 .infobox{
-  width: 250px;
-  height: 250px;
-  background-color: aqua;
-  
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 20vw;
+  color: #060606;
+  height: 50vh;
+  background-color: #74cef0;
+  padding: 3px;
+ 
 }
+.infobox h4 {
+  font-size: 20px;
+  text-align: center;
+
+}
+.infobox ul{
+  justify-content: space-evenly;
+  margin-top: 20px;
+  padding: 0;
+  border: 1px solid aquamarine;
+  list-style: none;
+  font-size: medium;
+}
+.infobox ul li{
+ margin: 3px 1px;
+}
+.infobox h4{
+  padding: 0;
+  margin: 0;
+}
+.infobox ul li a{
+  color: #645CBB;
+}
+.rightbox{
+  top: 0;
+  width: 20vw;
+  height: 100vh;
+  background: #74cef0
+}
+.calamties_chart{
+  height: 50vh;
+  width: 20vw;
+  background: #74cef0;
+}
+.calamties_chart label{
+
+   text-align: center;
+}
+
+
+
 .loader-line {
   width: 200px;
   height: 3px;

@@ -3,7 +3,7 @@ import '../index.css'
 const Loader = () => {
   return (
     <div>
-    <span class="loader-line"></span>
+    <span className="loader-line"></span>
     </div>
   )
 }

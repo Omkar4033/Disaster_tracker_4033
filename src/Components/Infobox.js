@@ -1,15 +1,19 @@
-import React from 'react'
+import React from "react";
 
-const Infobox = ({infobox}) => {
+const Infobox = ({ infobox }) => {
   return (
     <div className="infobox">
-        <h2>Event Location Info</h2>
-        <ul>
-            <li>ID: {infobox.id}</li>
-            <li>Title: {infobox.title}</li>
-        </ul>
+      <h4>Event Info</h4>
+      <ul >
+        <li  >Id: {infobox.id}</li>
+        <li>Title: {infobox.title}</li>
+        <li>Category: {infobox.category}</li>
+        <li>
+          <a rel="noreferrer" target="_blank" href={infobox.url}>read more</a>
+        </li>
+      </ul>
     </div>
-  )
-}
+  );
+};
 
-export default Infobox
+export default Infobox;
