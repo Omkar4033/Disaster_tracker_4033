@@ -33,7 +33,7 @@ code {
   border-radius: 4px;
 }
 .navbar {
-  background-color: rgba(35, 55, 75, 0.9);
+  background-color: tomato;
   color: #fff;
   padding: 6px 12px;
   font-family: monospace;
@@ -50,27 +50,41 @@ code {
   flex-direction: column;
   margin: auto;
   width: 20vw;
-  color: #060606;
+  color: black;
+  margin: 2px;
   height: 50vh;
+  justify-content: center;
+  
+  overflow-wrap: normal;
   background-color: #74cef0;
   padding: 3px;
  
 }
+.infobox label{
+   color: white;
+  margin-right: 4px;
+ 
+  text-underline-position: under;
+  background: tomato;
+  border: 2px solid tomato;
+  border-radius: 8px;
+}
 .infobox h4 {
   font-size: 20px;
   text-align: center;
+  color: tomato;
 
 }
 .infobox ul{
   justify-content: space-evenly;
   margin-top: 20px;
   padding: 0;
-  border: 1px solid aquamarine;
+  
   list-style: none;
   font-size: medium;
 }
 .infobox ul li{
- margin: 3px 1px;
+ margin: 6px 1px;
 }
 .infobox h4{
   padding: 0;
