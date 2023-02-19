@@ -10,15 +10,49 @@ const App = () => {
   const [data, setData] = useState([]);
   const [infobox, setinfobox] = useState();
   const [loader, setloader] = useState(false);
-
-  // let wildfire=0,volcano=0,storms=0,other=0;
-
-  // const countall=(d)=>{
-  //     if(d.categories[0].id ===12)
-  //     volcano++;
-  // }
-
+   const [wildfire,setwildfire]=useState(0);
+  const [volcano,setvolcano]=useState(0);
+   const [storms,setstorms]=useState(0);
+   const [other,setother]=useState(0);
+ 
+  const setValue=()=>{
+      setvolcano(prev=>prev+1) 
+  }
+  const setValue1=()=>{
+      setwildfire(prev=>prev+1) ;
+  }
+  const setValue2=()=>{
+      setstorms(prev=>prev+1) ;
+  }
+  const setValue3=()=>{
+      setother(prev=>prev+1) ;
+  }
+  
+  const countall=()=>{
+   for(let i=0;i<data.length;i++)
+   {
+     if(data[i].categories[0].id === 12)
+     {
+        setValue();
+     }
+     if(data[i].categories[0].id === 8)
+     {
+        setValue1();
+     }
+     if(data[i].categories[0].id === 15)
+     {
+        setValue2();
+     }
+     if(data[i].categories[0].id === 10)
+     {
+        setValue3();
+     }
+   }
+}
+  
+   console.log("volcanos are: ",volcano);
   useEffect(() => {
+
     const getValue = async () => {
       setloader(true);
       const res = await fetch(
@@ -26,17 +60,16 @@ const App = () => {
       );
       const resdata = await res.json();
       setData(resdata.events);
-      console.log(data);
       setloader(false);
-      // const rest=await data.filter(countall);
+      console.log(data);
+      countall();
     };
-
     getValue();
     // eslint-disable-next-line
-  }, []);
-
-  // console.log("total data is",data.length);
-  // console.log(volcano);
+    
+  },[]);
+  console.log("array length is: ",data.length);
+  
 
   return (
     <div>
@@ -48,16 +81,20 @@ const App = () => {
             <div className="navbar">Disaster Tracker</div>
             {infobox && <Infobox infobox={infobox} />}
             <div className="calamties_chart">
-             
+              <div className="total">
+              <span>SubTotal</span>
+              <span className="value">{data.length}</span>
+              </div>
               <PieChart
                 data={[
-                  { text: "One", value: 80, color: "tomato" },
-                  { title: "Two", value: 15, color: "pink" },
-                  { title: "Four", value: 14, color: "aqua" },
-                  { title: "Three", value: 1, color: "purple" },
+                  { text: "One", value: wildfire, color: "tomato" },
+                  { title: "Two", value: volcano, color: "#443C68" },
+                  { title: "Four", value: storms, color: "aqua" },
+                  { title: "Three", value: other, color: "#A27B5C" },
                 ]}
               />
               ;
+              <label>Disasters</label>
             </div>
           </div>
 
@@ -67,7 +104,7 @@ const App = () => {
               latitude: 40,
               zoom: 5,
             }}
-            style={{ width: "80vw", height: "100vh", position: "relative" }}
+            style={{ width: "80vw", height: "100vh", position: "relative",border: "inset" ,borderRadius:"1px",borderColor: "rgba(0,0,0,0.1)" }}
             mapStyle="mapbox://styles/mapbox/streets-v9"
             mapboxAccessToken="pk.eyJ1Ijoib21rYXI0MDMzIiwiYSI6ImNsZTE3aDVqNjBlMG0zcW12MzZlMm9hcDUifQ.5PArT3vGqGuNpM0_yQay1w"
           >
@@ -88,7 +125,7 @@ const App = () => {
                       category:d.categories[0].title
                     })
                   }
-                  style={{ fontSize: "25px", color: "yello" }}
+                  style={{ fontSize: "25px", color: "#443C68" }}
                 />}
                { d.categories[0].id ===8 && <MdOutlineLocalFireDepartment
                   onClick={() =>
@@ -124,7 +161,7 @@ const App = () => {
                       category:d.categories[0].title
                     })
                   }
-                  style={{ fontSize: "15px", color: "purple" }}
+                  style={{ fontSize: "15px", color: "#A27B5C" }}
                 />}
              
              
