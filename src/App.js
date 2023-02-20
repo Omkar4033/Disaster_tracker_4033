@@ -4,12 +4,10 @@ import { WiVolcano } from "react-icons/wi";
 import { MdOutlineLocalFireDepartment , MdWaterDrop,MdOutlineStorm} from "react-icons/md";
 import Infobox from "./Components/Infobox";
 import Map, { Marker } from "react-map-gl";
-import Loader from "./Components/Loader";
 import { PieChart } from "react-minimal-pie-chart";
 const App = () => {
   const [data, setData] = useState([]);
   const [infobox, setinfobox] = useState();
-  const [loader, setloader] = useState(false);
    const [wildfire,setwildfire]=useState(0);
   const [volcano,setvolcano]=useState(0);
    const [storms,setstorms]=useState(0);
@@ -54,13 +52,12 @@ const App = () => {
   useEffect(() => {
 
     const getValue = async () => {
-      setloader(true);
+  
       const res = await fetch(
         "https://eonet.gsfc.nasa.gov/api/v2.1/events"
       );
       const resdata = await res.json();
       setData(resdata.events);
-      setloader(false);
       console.log(data);
       countall();
     };
@@ -73,9 +70,7 @@ const App = () => {
 
   return (
     <div>
-      {loader ? (
-        <Loader />
-      ) : (
+
         <div className="main">
           <div className="rightbox">
             <div className="navbar">Disaster Tracker</div>
@@ -171,7 +166,7 @@ const App = () => {
 
           <div className="footer ">Copyright @ Omkar Raghu</div>
         </div>
-      )}
+   
     </div>
   );
 };
